@@ -1,0 +1,51 @@
+version: "3"
+networks:
+  httt_ql_app_network:
+    driver: bridge
+services:
+  nginx:
+    env_file:
+      - .env
+    image: nginx
+    container_name: ${APP_NAME}_nginx
+    ports:
+      - ${HTTP_PORT}:80
+    volumes:
+      - ./:/var/www
+      - ./nginx:/etc/nginx/conf.d
+    working_dir: /var/www
+    networks:
+      - httt_ql_app_network
+    links:
+      - web
+    restart: always
+  #
+  #  version: '2'
+  #  services:
+  db:
+    image: postgres:9.4
+    environment:
+      POSTGRES_USER: pguser
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: httt_ql_db
+    ports:
+      - 5431:5432
+    networks:
+      - httt_ql_app_network
+    restart: always
+  web:
+    build:
+      context: ./nginx
+      args:
+        - PHP_VERSION=${PHP_VERSION}
+    env_file:
+      - .env
+    container_name: ${APP_NAME}_web
+    volumes:
+      - ./:/var/www
+    working_dir: /var/www
+    networks:
+      - httt_ql_app_network
+    links:
+      - db
+    restart: always
