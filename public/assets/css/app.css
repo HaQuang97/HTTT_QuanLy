@@ -1,0 +1,22 @@
+.top-content h2{
+    margin-top: 50px;
+    text-align: center;
+}
+.top-content h5{
+    text-align: center;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button a, a:hover{
+    text-decoration: none;
+    color: #fff;
+}
