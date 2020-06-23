@@ -31,7 +31,7 @@
                         </div>
                         <div class="modal-body">
                             <label for="fname">Password</label>
-                            <input type="text" id="fname" name="txtPassword" placeholder="Password...">
+                            <input type="password" id="fname" name="txtPassword" placeholder="Password...">
                         </div>
                         <div class="modal-body">
                             <label for="fname">Địa Chỉ</label>
@@ -53,10 +53,11 @@
         <thead>
         <tr>
             <th>ID</th>
-            <th>TÊN CHI NHÁNH</th>
+            <th>TÊN NHÂN VIÊN</th>
             <th>ĐỊA CHỈ</th>
-            <th>NGÀY TẠO</th>
-            <th>NGÀY CẬP NHẬT</th>
+            <th>EMAIL</th>
+            <th>CHỨC VỤ</th>
+            <th>CHI NHÁNH</th>
             <th>THAO TÁC</th>
         </tr>
         </thead>
@@ -66,15 +67,22 @@
                 <td><?php echo $value['id']?></td>
                 <td><?php echo $value['name']?></td>
                 <td><?php echo $value['address']?></td>
-                <td><?php echo $value['created_at']?></td>
-                <td><?php echo $value['updated_at']?></td>
+                <td><?php echo $value['email']?></td>
+                <td><?php echo $value['role']?></td>
+                <td>
+                    @if($value['branch_id']==1)
+                        {{'CN Tp.Hà Nội'}}
+                    @elseif($value['branch_id']==1)
+                            {{'CN Tp.Hồ Chí Minh '}}
+                    @endif
+                </td>
                 <td>
 {{--ACTION--EDIT--}}
                     <div class="modal fade modalEditClass" id="modalEdit{{$value['id']}}" tabindex="-1" role="dialog" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header text-center">
-                                    <h4 class="modal-title w-100 font-weight-bold text-secondary ml-5">Sửa Chi Nhánh</h4>
+                                    <h4 class="modal-title w-100 font-weight-bold text-secondary ml-5">Sửa Nhân Viên</h4>
                                     <button type="button" class="close text-secondary" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -83,14 +91,26 @@
                                     {{ csrf_field() }}
                                     <div class="modal-body mx-3">
                                         <div class="md-form mb-5">
-                                            <label data-error="wrong" data-success="right" for="formNameEdit">TÊN CHI NHÁNH</label>
-                                            <input type="text" id="txtemployeeName" name="txtemployeeName" class="form-control validate" value="{{$value['name']}}">
+                                            <label data-error="wrong" data-success="right" for="formNameEdit">TÊN NHÂN VIÊN </label>
+                                            <input type="text" id="txtEmployeeName" name="txtEmployeeName" class="form-control validate" value="{{$value['name']}}">
                                         </div>
                                     </div>
                                     <div class="modal-body mx-3">
                                         <div class="md-form mb-5">
                                             <label data-error="wrong" data-success="right" for="formNameEdit">ĐỊA CHỈ</label>
-                                            <input type="text" id="txtAddressemployee" name="txtAddressemployee" class="form-control validate" value="{{$value['address']}}">
+                                            <input type="text" id="txtAddressEmployee" name="txtAddressEmployee" class="form-control validate" value="{{$value['address']}}">
+                                        </div>
+                                    </div>
+                                    <div class="modal-body mx-3">
+                                        <div class="md-form mb-5">
+                                            <label data-error="wrong" data-success="right" for="formNameEdit">EMAIL </label>
+                                            <input type="text" id="txtEmail" name="txtEmail" class="form-control validate" value="{{$value['email']}}">
+                                        </div>
+                                    </div>
+                                    <div class="modal-body mx-3">
+                                        <div class="md-form mb-5">
+                                            <label data-error="wrong" data-success="right" for="formNameEdit">CHỨC VỤ </label>
+                                            <input type="text" id="txtRole" name="txtRole" class="form-control validate" value="{{$value['role']}}">
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -116,7 +136,7 @@
                                 <form action="/employees/delete-employee/{{$value['id']}}" method="POST">
                                     @csrf
                                     <div class="modal-body mx-3">
-                                        <p class="text-center h4">Bạn có muốn xóa {{$value['name']}} không?</p>
+                                        <p class="text-center h4">Bạn có muốn xóa nhân viên {{$value['name']}} không?</p>
 
                                     </div>
                                     <div class="modal-footer d-flex justify-content-center deleteButtonsWrapper">

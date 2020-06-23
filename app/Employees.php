@@ -18,4 +18,8 @@ class Employees extends Model
     public function Oders(){
         return $this->hasMany('App\Orders', 'employee_id');
     }
+
+    public static function getAllEmployee(){
+        $allData = Employees::all();
+    }
 }
