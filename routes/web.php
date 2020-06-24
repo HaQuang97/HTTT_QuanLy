@@ -41,3 +41,10 @@ Route::prefix('/employees')->group(function () {
     Route::post('/update-employee/{id}', 'EmployeeController@postEditEmployee');
     Route::post('/delete-employee/{id}','EmployeeController@getDeleteEmployee');
 });
+
+Route::prefix('/customers')->group(function () {
+    Route::get('/', 'CustomerController@getListCustomer')->name('index-customer');
+    Route::post('/add-new-customer', 'CustomerController@postAddNewCustomer');
+    Route::post('/update-customer/{id}', 'CustomerController@postEditCustomer');
+    Route::post('/delete-customer/{id}','CustomerController@getDeleteCustomer');
+});

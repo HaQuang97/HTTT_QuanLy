@@ -14,4 +14,9 @@ class Customers extends Model
     public function Oders(){
         return $this->hasMany('App\Orders', 'customer_id');
     }
+
+    public static function getAllCustomer(){
+        $data = Customers::all();
+        return $data;
+    }
 }
