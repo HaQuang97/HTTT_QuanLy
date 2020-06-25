@@ -32,6 +32,7 @@ class EmployeeController extends BaseController
         $employee->role = $request->txtRole;
         $employee->address = $request->txtAddressEmployee;
         $employee->branch_id = 1;
+        $employee->branch_code = "HN";
         $employee->save();
         return redirect()->route('index-employee');
     }
@@ -43,6 +44,7 @@ class EmployeeController extends BaseController
         $employee->email = $request->txtEmail;
         $employee->role = $request->txtRole;
         $employee->address = $request->txtAddressEmployee;
+        $employee->updated_at = time();
         $employee->save();
         $data = Employees::orderBy('id', 'ASC')->paginate(10);
         $list_employee = Employees::all();

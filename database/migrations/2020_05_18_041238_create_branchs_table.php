@@ -16,6 +16,7 @@ class CreateBranchsTable extends Migration
         Schema::create('branchs', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
+            $table->string('code');
             $table->string('name');
             $table->string('address');
             $table->timestamps();

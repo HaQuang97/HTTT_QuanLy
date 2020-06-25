@@ -22,6 +22,7 @@ class CreateEmployeesTable extends Migration
             $table->string('address');
             $table->string('role');
             $table->integer('branch_id');
+            $table->string('branch_code');
             $table->timestamps();
         });
     }

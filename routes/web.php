@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/', 'BranchController@getListBranch')->name('index-branch');
 //Route::get('/', function () {
 //    return view('welcome');
 //});
@@ -35,16 +35,16 @@ Route::prefix('/branchs')->group(function () {
     Route::post('/delete-branch/{id}','BranchController@getDeleteBranch');
 });
 
-Route::prefix('/employees')->group(function () {
-    Route::get('/', 'EmployeeController@getListEmployee')->name('index-employee');
-    Route::post('/add-new-employee', 'EmployeeController@postAddNewEmployee');
-    Route::post('/update-employee/{id}', 'EmployeeController@postEditEmployee');
-    Route::post('/delete-employee/{id}','EmployeeController@getDeleteEmployee');
-});
-
 Route::prefix('/customers')->group(function () {
     Route::get('/', 'CustomerController@getListCustomer')->name('index-customer');
     Route::post('/add-new-customer', 'CustomerController@postAddNewCustomer');
     Route::post('/update-customer/{id}', 'CustomerController@postEditCustomer');
     Route::post('/delete-customer/{id}','CustomerController@getDeleteCustomer');
+});
+
+Route::prefix('/employees')->group(function () {
+    Route::get('/', 'EmployeeController@getListEmployee')->name('index-employee');
+    Route::post('/add-new-employee', 'EmployeeController@postAddNewEmployee');
+    Route::post('/update-employee/{id}', 'EmployeeController@postEditEmployee');
+    Route::post('/delete-employee/{id}','EmployeeController@getDeleteEmployee');
 });

@@ -19,7 +19,7 @@
                         <h4 class="modal-title">THÊM MỚI DỮ LIỆU</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
-                    <form class="photo-form" action="/employees/add-new-employee" method="POST">
+                    <form class="photo-form" action="/HTTT_QuanLy/public/employees/add-new-employee" method="POST">
                         {{ csrf_field() }}
                         <div class="modal-body">
                                 <label for="fname">Tên Nhân Viên</label>
@@ -53,6 +53,7 @@
         <thead>
         <tr>
             <th>ID</th>
+            <th>MÃ CN</th>
             <th>TÊN NHÂN VIÊN</th>
             <th>ĐỊA CHỈ</th>
             <th>EMAIL</th>
@@ -65,14 +66,15 @@
         <?php foreach($data as $value){ ?>
             <tr>
                 <td><?php echo $value['id']?></td>
+                <td><?php echo $value['branch_code']?></td>
                 <td><?php echo $value['name']?></td>
                 <td><?php echo $value['address']?></td>
                 <td><?php echo $value['email']?></td>
                 <td><?php echo $value['role']?></td>
                 <td>
-                    @if($value['branch_id']==1)
+                    @if($value['branch_code']=="HN")
                         {{'CN Tp.Hà Nội'}}
-                    @elseif($value['branch_id']==1)
+                    @elseif($value['branch_code']=="HCM")
                             {{'CN Tp.Hồ Chí Minh '}}
                     @endif
                 </td>
@@ -87,7 +89,7 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <form class="photo-form" action="/employees/update-employee/{{$value['id']}}" method="POST">
+                                <form class="photo-form" action="/HTTT_QuanLy/public/employees/update-employee/{{$value['id']}}" method="POST">
                                     {{ csrf_field() }}
                                     <div class="modal-body mx-3">
                                         <div class="md-form mb-5">
@@ -133,7 +135,7 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <form action="/employees/delete-employee/{{$value['id']}}" method="POST">
+                                <form action="/HTTT_QuanLy/public/employees/delete-employee/{{$value['id']}}" method="POST">
                                     @csrf
                                     <div class="modal-body mx-3">
                                         <p class="text-center h4">Bạn có muốn xóa nhân viên {{$value['name']}} không?</p>

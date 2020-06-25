@@ -18,6 +18,7 @@ class CreateOrdersTable extends Migration
             $table->bigIncrements('id');
             $table->integer('employee_id');
             $table->integer('customer_id');
+            $table->string("branch_code");
             $table->timestamps();
         });
     }

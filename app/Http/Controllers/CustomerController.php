@@ -27,6 +27,8 @@ class CustomerController extends BaseController
         $customer = new Customers();
         $customer->name = $request->txtCustomerName;
         $customer->address = $request->txtAddressCustomer;
+        $customer->phone = $request->txtPhoneCustomer;
+        $customer->branch_code = "HN";
         $customer->save();
         return redirect()->route('index-customer');
     }
@@ -36,6 +38,8 @@ class CustomerController extends BaseController
         $customer = Customers::find($id);
         $customer->name = $request->txtCustomerName;
         $customer->address = $request->txtAddressCustomer;
+        $customer->phone = $request->txtPhoneCustomer;
+        $customer->updated_at = time();
         $customer->save();
         $data = Customers::orderBy('id', 'ASC')->paginate(10);
         $list_customer = Customers::getAllcustomer();

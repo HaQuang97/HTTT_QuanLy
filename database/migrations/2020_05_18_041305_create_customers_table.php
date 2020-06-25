@@ -19,6 +19,7 @@ class CreateCustomersTable extends Migration
             $table->string('name');
             $table->string('address');
             $table->string('phone');
+            $table->string('branch_code');
             $table->timestamps();
         });
     }

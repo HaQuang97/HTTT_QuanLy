@@ -25,6 +25,7 @@ class BranchController extends BaseController
     public function postAddNewBranch(Request $request)
     {
         $branch = new Branchs();
+        $branch->code = "HN";
         $branch->name = $request->txtBranchName;
         $branch->address = $request->txtAddressBranch;
         $branch->save();
@@ -36,6 +37,7 @@ class BranchController extends BaseController
         $branch = Branchs::find($id);
         $branch->name = $request->txtBranchName;
         $branch->address = $request->txtAddressBranch;
+        $branch->updated_at = time();
         $branch->save();
         $data = Branchs::orderBy('id', 'ASC')->paginate(10);
         $list_branch = Branchs::getAllBranch();

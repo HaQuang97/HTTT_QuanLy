@@ -19,7 +19,7 @@
                         <h4 class="modal-title">THÊM MỚI DỮ LIỆU</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
-                    <form class="photo-form" action="/branchs/add-new-branch" method="POST">
+                    <form class="photo-form" action="/HTTT_QuanLy/public/branchs/add-new-branch" method="POST">
                         {{ csrf_field() }}
                         <div class="modal-body">
                                 <label for="fname">Tên Chi Nhánh</label>
@@ -41,6 +41,7 @@
         <thead>
         <tr>
             <th>ID</th>
+            <th>MÃ CN</th>
             <th>TÊN CHI NHÁNH</th>
             <th>ĐỊA CHỈ</th>
             <th>NGÀY TẠO</th>
@@ -52,6 +53,7 @@
         <?php foreach($data as $value){ ?>
             <tr>
                 <td><?php echo $value['id']?></td>
+                <td><?php echo $value['code']?></td>
                 <td><?php echo $value['name']?></td>
                 <td><?php echo $value['address']?></td>
                 <td><?php echo $value['created_at']?></td>
@@ -67,7 +69,7 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <form class="photo-form" action="/branchs/update-branch/{{$value['id']}}" method="POST">
+                                <form class="photo-form" action="/HTTT_QuanLy/public/branchs/update-branch/{{$value['id']}}" method="POST">
                                     {{ csrf_field() }}
                                     <div class="modal-body mx-3">
                                         <div class="md-form mb-5">
@@ -101,7 +103,7 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <form action="/branchs/delete-branch/{{$value['id']}}" method="POST">
+                                <form action="/HTTT_QuanLy/public/branchs/delete-branch/{{$value['id']}}" method="POST">
                                     @csrf
                                     <div class="modal-body mx-3">
                                         <p class="text-center h4">Bạn có muốn xóa {{$value['name']}} không?</p>
