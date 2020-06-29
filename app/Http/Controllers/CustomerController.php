@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 
 use App\Customers;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 
 class CustomerController extends BaseController

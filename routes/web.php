@@ -48,3 +48,24 @@ Route::prefix('/employees')->group(function () {
     Route::post('/update-employee/{id}', 'EmployeeController@postEditEmployee');
     Route::post('/delete-employee/{id}','EmployeeController@getDeleteEmployee');
 });
+
+Route::prefix('/books')->group(function () {
+    Route::get('/', 'BookController@getListBook')->name('index-book');
+    Route::post('/add-new-book', 'BookController@postAddNewBook');
+    Route::post('/update-book/{id}', 'BookController@postEditBook');
+    Route::post('/delete-book/{id}','BookController@getDeleteBook');
+});
+
+Route::prefix('/orders')->group(function () {
+    Route::get('/', 'OrderController@getListOrder')->name('index-order');
+    Route::get('/get-order', 'OrderController@getAddNewOrder');
+    Route::post('/add-new-order', 'OrderController@postAddNewOrder');
+    Route::get('/update-order/{id}', 'OrderController@getEditOrder');
+    Route::post('/update-order/{id}', 'OrderController@postEditOrder');
+    Route::get('/delete-order/{id}','OrderController@getDeleteOrder');
+    Route::get('/order-detail/{id}', 'OrderController@getOrderDetail');
+});
+
+Route::prefix('/statisticals')->group(function (){
+    Route::get('/', 'StatisticalController@getDefault')->name('index-statistical');
+});

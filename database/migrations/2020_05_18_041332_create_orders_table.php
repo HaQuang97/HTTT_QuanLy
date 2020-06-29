@@ -19,6 +19,7 @@ class CreateOrdersTable extends Migration
             $table->integer('employee_id');
             $table->integer('customer_id');
             $table->string("branch_code");
+            $table->integer('total_price');
             $table->timestamps();
         });
     }

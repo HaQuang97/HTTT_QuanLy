@@ -5,6 +5,7 @@ namespace App;
 
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Orders extends Model
 {
@@ -23,4 +24,14 @@ class Orders extends Model
         return $this->hasMany('App\Order_details', 'order_id');
     }
 
+    public static function getAllOrder(){
+        $data = Orders::all();
+        return $data;
+    }
+
+    public static function getOrderByID($id){
+        $data = DB::table('orders')->where('id','=',$id)
+                ->first();
+        return $data;
+    }
 }
