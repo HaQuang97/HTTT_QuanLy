@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Artisan;
 
 class AuthenticationController extends BaseController
 {
@@ -43,6 +44,7 @@ class AuthenticationController extends BaseController
 
     public function logout(){
         if (Session::has('sessionLogin')) {
+            Artisan::call('cache:clear');
             Session::forget('sessionLogin');
         }
         return view('auth.login');
