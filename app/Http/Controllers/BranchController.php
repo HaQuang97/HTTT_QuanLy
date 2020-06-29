@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Branchs;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Session;
 
 class BranchController extends BaseController
 {
@@ -17,9 +18,14 @@ class BranchController extends BaseController
 
     public function getListBranch()
     {
-        $branch = Branchs::orderBy('id', 'ASC')->paginate(10);
-        $list_branch = Branchs::getAllBranch();
-        return view('branchs.index', ['data' => $branch, 'list_branch' => $list_branch]);
+        if (Session::has('sessionLogin')) {
+            $branch = Branchs::orderBy('id', 'ASC')->paginate(10);
+            $list_branch = Branchs::getAllBranch();
+            return view('branchs.index', ['data' => $branch, 'list_branch' => $list_branch]);
+        }
+        else{
+                return view('auth.login')->with(['flash_level' => 'result_msg', 'flash_massage' => 'Vui Lòng Đăng Nhập !']);
+        }
     }
 
     public function postAddNewBranch(Request $request)

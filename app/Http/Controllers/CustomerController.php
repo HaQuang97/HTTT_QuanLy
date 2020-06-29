@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Customers;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Session;
 
 class CustomerController extends BaseController
 {
@@ -18,9 +19,14 @@ class CustomerController extends BaseController
 
     public function getListCustomer()
     {
-        $customer = Customers::orderBy('id', 'ASC')->paginate(10);
-        $list_customer = Customers::getAllCustomer();
-        return view('customers.index', ['data' => $customer, 'list_customer' => $list_customer]);
+        if (Session::has('sessionLogin')) {
+            $customer = Customers::orderBy('id', 'ASC')->paginate(10);
+            $list_customer = Customers::getAllCustomer();
+            return view('customers.index', ['data' => $customer, 'list_customer' => $list_customer]);
+        }
+        else{
+            return view('auth.login')->with(['flash_level' => 'result_msg', 'flash_massage' => 'Vui Lòng Đăng Nhập !']);
+        }
     }
 
     public function postAddNewCustomer(Request $request)

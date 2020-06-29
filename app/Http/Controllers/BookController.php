@@ -8,6 +8,7 @@ use App\Books;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Session;
 
 class BookController extends BaseController
 {
@@ -19,9 +20,14 @@ class BookController extends BaseController
 
     public function getListBook()
     {
-        $book = Books::orderBy('id', 'ASC')->paginate(10);
-        $list_book = Books::getAllBook();
-        return view('books.index', ['data' => $book, 'list_book' => $list_book]);
+        if (Session::has('sessionLogin')) {
+            $book = Books::orderBy('id', 'ASC')->paginate(10);
+            $list_book = Books::getAllBook();
+            return view('books.index', ['data' => $book, 'list_book' => $list_book]);
+        }
+        else{
+            return view('auth.login')->with(['flash_level' => 'result_msg', 'flash_massage' => 'Vui Lòng Đăng Nhập !']);
+        }
     }
 
     public function postAddNewBook(Request $request)
@@ -47,7 +53,6 @@ class BookController extends BaseController
         $book->price = $request->txtPriceBook;
         $book->supplier = $request->txtSupplierBook;
         $book->status = $request->txtStatusBook;
-//        $book->image = $image_name;
         $book->save();
         return redirect()->route('index-book');
     }

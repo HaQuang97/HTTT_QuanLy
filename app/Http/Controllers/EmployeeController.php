@@ -27,7 +27,6 @@ class EmployeeController extends BaseController
         $employee = new Employees();
         $employee->name = $request->txtEmployeeName;
         $employee->email = $request->txtEmail;
-        $employee->password = $request->txtPassword;
         $employee->role = $request->txtRole;
         $employee->address = $request->txtAddressEmployee;
         $employee->branch_id = 1;

@@ -13,12 +13,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'StatisticalController@getDefault')->name('index-statistical');
-
-//Route::get('/', 'UsersController@getLogin')->name('login');
-//Route::post('/login', 'UsersController@postLogin')->name('post-login');
-//Route::post('/register', 'UsersController@postRegister')->name('register');
-//Route::get('/logout', 'UsersController@logout')->name('logout');
+Route::get('/', 'AuthenticationController@getLogin');
+Route::get('/create-admin', 'AuthenticationController@createAdmin');
+Route::post('/login', 'AuthenticationController@postLogin');
+Route::get('/logout', 'AuthenticationController@logout')->name('logout');
 
 Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');

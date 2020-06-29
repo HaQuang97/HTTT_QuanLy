@@ -19,7 +19,7 @@
                     Nhân Viên Tạo Đơn:
                 </label>
                 <div class="col-md-6">
-                    <input name="employeeName" id="employeeName" class="form-control"/>
+                    <input required name="employeeName" id="employeeName" class="form-control"/>
                 </div>
             </div>
             <div class="form-group">
@@ -27,7 +27,7 @@
                     Họ & Tên Khách Hàng:
                 </label>
                 <div class="col-md-6">
-                    <input name="customerName" id="customerName" class="form-control"/>
+                    <input name="customerName" id="customerName" class="form-control" required/>
                 </div>
             </div>
             <div class="form-group">
@@ -35,7 +35,7 @@
                     Số Điện Thoại:
                 </label>
                 <div class="col-md-6">
-                    <input name="phone" id="phone" class="form-control"/>
+                    <input required name="phone" id="phone" class="form-control"/>
                 </div>
             </div>
             <div class="form-group">
@@ -43,21 +43,21 @@
                     Địa Chỉ:
                 </label>
                 <div class="col-md-6">
-                    <input name="address" id="address" class="form-control"/>
+                    <input required name="address" id="address" class="form-control"/>
                 </div>
             </div>
             <div class="form-group">
                 <label for="order1" class=" control-label">Mặt Hàng : </label>
                 <div class="col-md-6">
-                    <input name="product" id="product" class="form-control"/>
+                    <input required name="product" id="product" class="form-control"/>
                 </div>
                 <label for="quantity1" class=" control-label">Số Lượng : </label>
                 <div class="col-md-6">
-                    <input name="quantity" id="quantity" class="form-control"/>
+                    <input required name="quantity" id="quantity" class="form-control"/>
                 </div>
                 <label for="price1" class=" control-label">Giá : </label>
                 <div class="col-md-6">
-                    <input name="price" id="price" class="form-control" placeholder="Giá/1 sách ... VNĐ"/>
+                    <input required name="price" id="price" class="form-control" placeholder="Giá/1 sách ... VNĐ"/>
                 </div>
             </div>
             {{ csrf_field() }}

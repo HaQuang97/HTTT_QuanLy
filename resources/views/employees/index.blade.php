@@ -23,15 +23,11 @@
                         {{ csrf_field() }}
                         <div class="modal-body">
                                 <label for="fname">Tên Nhân Viên</label>
-                                <input type="text" id="fname" name="txtEmployeeName" placeholder="Name employee...">
+                                <input required type="text" id="fname" name="txtEmployeeName" placeholder="Name employee...">
                         </div>
                         <div class="modal-body">
                             <label for="fname">Email</label>
-                            <input type="text" id="fname" name="txtEmail" placeholder="Email...">
-                        </div>
-                        <div class="modal-body">
-                            <label for="fname">Password</label>
-                            <input type="password" id="fname" name="txtPassword" placeholder="Password...">
+                            <input required type="text" id="fname" name="txtEmail" placeholder="Email...">
                         </div>
                         <div class="modal-body">
                             <label for="fname">Địa Chỉ</label>
@@ -39,7 +35,7 @@
                         </div>
                         <div class="modal-body">
                             <label for="fname">Role</label>
-                            <input type="text" id="fname" name="txtRole" placeholder="Role...">
+                            <input required type="text" id="fname" name="txtRole" placeholder="Role...">
                         </div>
                         <div class="modal-footer">
                             <input type="submit" class="btn btn-success">

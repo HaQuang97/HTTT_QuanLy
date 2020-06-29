@@ -19,14 +19,7 @@
             </li>
         </ul>
     </div>
-    <div class="dropdown">
-        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            ADMIN
-        </a>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="#"><i class="fa fa-user"></i>My Profile</a>
-            <a class="dropdown-item" href="#"><i class="fa fa-cog"></i>Settings</a>
-            <a class="dropdown-item" href="#"><i class="fa fa-power-off"></i>Logout</a>
-        </div>
+    <div class="right-nav">
+        <p>XIN CHAO ADMIN/ <a href="/HTTT_QuanLy/public/logout/">Đăng Xuất</a></p>
     </div>
 </nav>

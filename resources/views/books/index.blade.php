@@ -62,7 +62,6 @@
         <tr>
             <th>ID</th>
             <th>TÊN SÁCH</th>
-            <th>IMAGE</th>
             <th>MÔ TẢ</th>
             <th>GIÁ</th>
             <th>NHÀ XUẤT BẢN</th>
@@ -75,7 +74,6 @@
             <tr>
                 <td><?php echo $value['id']?></td>
                 <td><?php echo $value['name']?></td>
-                <td><?php echo $value['image']?></td>
                 <td><?php echo $value['description']?></td>
                 <td><?php echo $value['price']?></td>
                 <td><?php echo $value['supplier']?></td>
