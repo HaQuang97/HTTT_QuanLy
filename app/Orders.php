@@ -34,4 +34,19 @@ class Orders extends Model
                 ->first();
         return $data;
     }
+
+    public static function listOrderStatistical($startDate, $endDate){
+        if ($startDate < $endDate){
+            $result = DB::table('orders')->where('created_at','>=',$startDate)
+                ->where('created_at','<=',$endDate)
+                ->get();
+        }
+        else{
+            $result = DB::table('orders')->where('created_at','>=',$endDate)
+                ->where('created_at','<=',$startDate)
+                ->get();
+        }
+
+        return $result;
+    }
 }

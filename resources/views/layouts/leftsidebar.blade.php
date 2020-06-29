@@ -5,7 +5,7 @@
             <li class="menu-title">QUẢN LÝ
                 <ul>
                     <li>
-                        <a href="/HTTT_QuanLy/public/statistical">
+                        <a href="/HTTT_QuanLy/public/statisticals">
                             <i class="fa fa-bar-chart" aria-hidden="true"></i> THỐNG KÊ
                         </a>
                     </li>

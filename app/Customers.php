@@ -42,4 +42,19 @@ class Customers extends Model
         $customer = DB::table('customers')->where('id', '=', $id)->first();
         return $customer;
     }
+
+    public static function listCustomerStatistical($startDate, $endDate){
+        if ($startDate < $endDate){
+            $result = DB::table('customers')->where('created_at','>=',$startDate)
+                ->where('created_at','<=',$endDate)
+                ->get();
+        }
+        else{
+            $result = DB::table('customers')->where('created_at','>=',$endDate)
+                ->where('created_at','<=',$startDate)
+                ->get();
+        }
+
+        return $result;
+    }
 }

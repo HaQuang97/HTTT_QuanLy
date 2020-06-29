@@ -13,10 +13,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'BranchController@getListBranch')->name('index-branch');
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/', 'StatisticalController@getDefault')->name('index-statistical');
 
 //Route::get('/', 'UsersController@getLogin')->name('login');
 //Route::post('/login', 'UsersController@postLogin')->name('post-login');
@@ -30,35 +27,35 @@ Route::get('/clear-cache', function() {
 
 Route::prefix('/branchs')->group(function () {
     Route::get('/', 'BranchController@getListBranch')->name('index-branch');
-    Route::post('/add-new-branch', 'BranchController@postAddNewBranch');
+    Route::post('/add-new-branch/', 'BranchController@postAddNewBranch');
     Route::post('/update-branch/{id}', 'BranchController@postEditBranch');
     Route::post('/delete-branch/{id}','BranchController@getDeleteBranch');
 });
 
 Route::prefix('/customers')->group(function () {
     Route::get('/', 'CustomerController@getListCustomer')->name('index-customer');
-    Route::post('/add-new-customer', 'CustomerController@postAddNewCustomer');
+    Route::post('/add-new-customer/', 'CustomerController@postAddNewCustomer');
     Route::post('/update-customer/{id}', 'CustomerController@postEditCustomer');
     Route::post('/delete-customer/{id}','CustomerController@getDeleteCustomer');
 });
 
 Route::prefix('/employees')->group(function () {
     Route::get('/', 'EmployeeController@getListEmployee')->name('index-employee');
-    Route::post('/add-new-employee', 'EmployeeController@postAddNewEmployee');
+    Route::post('/add-new-employee/', 'EmployeeController@postAddNewEmployee');
     Route::post('/update-employee/{id}', 'EmployeeController@postEditEmployee');
     Route::post('/delete-employee/{id}','EmployeeController@getDeleteEmployee');
 });
 
 Route::prefix('/books')->group(function () {
     Route::get('/', 'BookController@getListBook')->name('index-book');
-    Route::post('/add-new-book', 'BookController@postAddNewBook');
+    Route::post('/add-new-book/', 'BookController@postAddNewBook');
     Route::post('/update-book/{id}', 'BookController@postEditBook');
     Route::post('/delete-book/{id}','BookController@getDeleteBook');
 });
 
 Route::prefix('/orders')->group(function () {
     Route::get('/', 'OrderController@getListOrder')->name('index-order');
-    Route::get('/get-order', 'OrderController@getAddNewOrder');
+    Route::get('/get-order/', 'OrderController@getAddNewOrder');
     Route::post('/add-new-order', 'OrderController@postAddNewOrder');
     Route::get('/update-order/{id}', 'OrderController@getEditOrder');
     Route::post('/update-order/{id}', 'OrderController@postEditOrder');
@@ -68,4 +65,5 @@ Route::prefix('/orders')->group(function () {
 
 Route::prefix('/statisticals')->group(function (){
     Route::get('/', 'StatisticalController@getDefault')->name('index-statistical');
+    Route::get('/statistical-date/', 'StatisticalController@getStatistical');
 });
